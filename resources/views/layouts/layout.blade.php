@@ -27,7 +27,7 @@
     <body>
     <header>
 
-        <img src="images/home/logo2.png" style="position:fixed;z-index:1031;">
+        <img src="images/home/logos6.png" style="position:fixed;z-index:1031;height: 100px;width: 200px">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">

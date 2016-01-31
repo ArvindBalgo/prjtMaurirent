@@ -27,7 +27,7 @@
                         </div>
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>Preskil Deals</h1>
+                                <h1>Preskil Deals</h1>
                                 <h2>Just Added</h2>
                                 <p>Awesome place to be </p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
