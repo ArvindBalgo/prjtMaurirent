@@ -35,6 +35,12 @@ Route::get('blade', function () {
     $drinks = array('Vodka', 'Gin', 'Brandy');
     return view('page', array('name' => 'Arvind', 'day' => 'Friday', 'drinks' => $drinks));
 });
+Route::get('/api/v1/users/{id?}', 'users@index');
+Route::post('/api/v1/users', 'users@store');
+Route::post('/api/v1/users/{id}', 'users@update');
+Route::delete('/api/v1/users/{id}', 'users@destroy');
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

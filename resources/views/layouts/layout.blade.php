@@ -13,10 +13,15 @@
         <link href="{{asset('css/animate.css')}}" rel="stylesheet">
         <link href="{{asset('css/main.css')}}" rel="stylesheet">
         <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+        <link href="{{'css/angular-material.min.css'}}" rel="stylesheet">
         <!--[if lt IE 9]>
         <script src="{{asset('js/html5shiv.js')}}"></script>
         <script src="{{asset('js/respond.min.js')}}"></script>
-        <![endif]-->       
+        <script src="{{asset('js/angular.min.js')}}"></script>
+        <script src="{{asset('js/angular-animate.min.js')}}"></script>
+        <script src="{{asset('js/angular-aria.min.js')}}"></script>
+        <script src="{{asset('js/angular-material.min.js')}}"></script>
+        <![endif]-->
         <link rel="shortcut icon" href="{{asset('images/ico/favicon.ico')}}">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('images/ico/apple-touch-icon-144-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('images/ico/apple-touch-icon-114-precomposed.png')}}">
@@ -27,7 +32,7 @@
     <body>
     <header>
 
-        <img src="images/home/logos6.png" style="position:fixed;z-index:1031;height: 100px;width: 200px">
+        <img src="images/home/logo2incline.png" style="position:fixed;z-index:1031;height: 100px;width: 200px">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
