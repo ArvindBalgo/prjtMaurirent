@@ -29,13 +29,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('images/ico/apple-touch-icon-114-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('images/ico/apple-touch-icon-72-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" href="{{asset('images/ico/apple-touch-icon-57-precomposed.png')}}">
-        <style>
-            body{
-            }
-            section{
 
-            }
-        </style>
         <style type="text/css">
             form.tab-form-demo .tab-pane {
                 margin: 20px 20px;
