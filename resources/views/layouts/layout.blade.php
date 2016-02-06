@@ -17,24 +17,38 @@
         <!--[if lt IE 9]>
         <script src="{{asset('js/html5shiv.js')}}"></script>
         <script src="{{asset('js/respond.min.js')}}"></script>
+        <![endif]-->
         <script src="{{asset('js/angular.min.js')}}"></script>
         <script src="{{asset('js/angular-animate.min.js')}}"></script>
         <script src="{{asset('js/angular-aria.min.js')}}"></script>
         <script src="{{asset('js/angular-material.min.js')}}"></script>
-        <![endif]-->
+        <script src="{{asset('js/ui-bootstrap-tpls-1.1.2.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('scripts/app.js')}}"></script>
         <link rel="shortcut icon" href="{{asset('images/ico/favicon.ico')}}">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('images/ico/apple-touch-icon-144-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('images/ico/apple-touch-icon-114-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('images/ico/apple-touch-icon-72-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" href="{{asset('images/ico/apple-touch-icon-57-precomposed.png')}}">
+        <style>
+            body{
+            }
+            section{
+
+            }
+        </style>
+        <style type="text/css">
+            form.tab-form-demo .tab-pane {
+                margin: 20px 20px;
+            }
+        </style>
     </head><!--/head-->
 
-    <body>
+    <body ng-app="app" >
     <header>
 
-        <img src="images/home/logo2incline.png" style="position:fixed;z-index:1031;height: 100px;width: 200px">
+        <!--<img src="images/home/logos6.png" style="position:fixed;z-index:1031;height: 150px;width: 400px">-->
         <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
+            <div class="container-fluid" ng-controller="appController">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse1" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>
@@ -42,6 +56,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <a class="navbar-brand" href="#"><h2>MauriRent</h2></a>
                 </div>
                 <div class="navbar- collapse navbar-collapse" id="collapse1" style="padding-left: 500px;">
                     <ul class="nav navbar-nav">
@@ -54,8 +69,6 @@
             </div>
         </nav>
     </header>
-
-
         @yield('content')
 
         <footer id="footer"><!--Footer-->

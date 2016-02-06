@@ -3261,3 +3261,17 @@ body { /* Addresses a small issue in webkit: http://bit.ly/NEdoDq */
     -o-animation-duration: 0.75s;
     animation-duration: 0.75s;
 }
+#slides_control > div{
+	height: 200px;
+}
+img{
+	margin:auto;
+	width: 400px;
+}
+#slides_control {
+	position:absolute;
+	width: 400px;
+	left:50%;
+	top:20px;
+	margin-left:-200px;
+}

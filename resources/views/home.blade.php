@@ -1,10 +1,10 @@
 @extends('layouts.layout')
+@section('content')
 
-@section('content')       
-<section id="slider" style="padding-top: 55px;"><!--slider-->
+<section id="slider" style="padding-top: 55px;" ng-controller="homeController"><!--slider-->
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12" style="height: 305px">
                 <div id="slider-carousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
@@ -13,44 +13,18 @@
                     </ol>
 
                     <div class="carousel-inner">
-                        <div class="item active">
+                       <div class="item <%data.active%>" ng-repeat="data in arrLatest">
                             <div class="col-sm-6">
-                                <h1>Vacations</h1>
-                                <h2>Need a place!!!!</h2>
-                                <p>Check out our catalogues of apartments, bungalows and hotels</p>
-                                <button type="button" class="btn btn-default get">Start Browsing</button>
+                                <h1><%data.title%></h1>
+                                <h2><%data.caption%></h2>
+                                <p><%data.description%></p>
+                                <md-button class="md-raised md-warn">Details</md-button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="images/home/apartment1.jpg" class="girl img-responsive" alt="" />
-                                <img src="images/home/pricing.png"  class="pricing" alt="" />
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-sm-6">
-                                <h1>Preskil Deals</h1>
-                                <h2>Just Added</h2>
-                                <p>Awesome place to be </p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="images/home/apartment2.jpg" class="girl img-responsive" alt="" />
-                                <img src="images/home/pricing.png"  class="pricing" alt="" />
+                                <img ng-src="<%data.imgsrc%>" class="girl img-responsive" alt="" />
+                                <img ng-src="<%data.pricesrc%>"  class="pricing" alt="" style="width: 100px; height: 100px;" />
                             </div>
                         </div>
-
-                        <div class="item">
-                            <div class="col-sm-6">
-                                <h1>Valentines Specials</h1>
-                                <h2>Available for the month of February</h2>
-                                <p>swimming pool, attrative price for long term stay </p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="images/home/apartment3.jpg" class="girl img-responsive" alt="" />
-                                <img src="images/home/pricing.png" class="pricing" alt="" />
-                            </div>
-                        </div>
-
                     </div>
 
                     <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
@@ -60,14 +34,13 @@
                         <i class="fa fa-angle-right"></i>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
 </section><!--/slider-->
 
 <section>
-    <div class="container">
+    <div class="container" ng-controller="contentController">
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
@@ -75,8 +48,41 @@
                 </div>
             </div>
 
-            <div class="col-sm-9 padding-right">
-                <div class="features_items"><!--features_items-->
+            <div class="col-sm-9 padding-right" ng-cloak>
+                <uib-tabset>
+                    <uib-tab heading="Static title">Static content</uib-tab>
+                    <uib-tab ng-repeat="tab in tabs" heading="<%tab.title%>" active="tab.active" disable="tab.disabled">
+                        <%tab.content%>
+                    </uib-tab>
+                    <uib-tab select="alertMe()">
+                        <uib-tab-heading>
+                            <i class="glyphicon glyphicon-bell"></i> Alert!
+                        </uib-tab-heading>
+                        I've got an HTML heading, and a select callback. Pretty cool!
+                    </uib-tab>
+                </uib-tabset>
+
+
+                <md-toolbar class="md-theme-light">
+                    <h2 class="md-toolbar-tools">
+                        <span>Full Bleed</span>
+                    </h2>
+                </md-toolbar>
+                <md-content>
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-repeat="item in messages">
+                            <div class="md-list-item-text">
+                                <h3><%item.what%></h3>
+                                <h4><%item.who%></h4>
+                                <p><%item.notes%></p>
+                            </div>
+                            <md-button class="md-secondary">Respond</md-button>
+                            <md-divider ng-if="!$last"></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+                <!--
+                <div class="features_items"><!--features_items->
                     <h2 class="title text-center">Features Items</h2>
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
@@ -155,9 +161,9 @@
                             </div>
                         </div>
                     </div>
-                </div><!--features_items-->
+                </div><!--features_items->
 
-                <div class="category-tab"><!--category-tab-->
+                <div class="category-tab"><!--category-tab->
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
@@ -443,14 +449,14 @@
                             </div>
                         </div>
                     </div>
-                </div><!--/category-tab-->
+                </div><!--/category-tab->
 
-                <div class="recommended_items"><!--recommended_items-->
+                <div class="recommended_items"><!--recommended_items->
                     <h2 class="title text-center">recommended items</h2>
 
                     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="item active">	
+                            <div class="item active">
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
@@ -491,7 +497,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">	
+                            <div class="item">
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
@@ -538,7 +544,7 @@
                         </a>
                         <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
                             <i class="fa fa-angle-right"></i>
-                        </a>			
+                        </a>
                     </div>
                 </div><!--/recommended_items-->
 
