@@ -39,7 +39,7 @@ app.controller('homeController', function($scope, $http){
 });
 
 app.controller('contentController', function($scope, $http){
-    $scope.side = "sideContent"
+    $scope.side = "sideContent";
     $scope.mainContent = "main content";
     $scope.arrRegions = [
                             {value:'North',display:'North'},
@@ -75,18 +75,20 @@ app.controller('contentController', function($scope, $http){
         when: '3:08PM',
         notes: " I'll be in your neighborhood doing errands"
     }];
-    $scope.tabs = [
-        { title:'Dynamic Title 1', content:'Dynamic content 1' },
-        { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
-    ];
-
-    $scope.alertMe = function() {
-        setTimeout(function() {
-            alert('You\'ve selected the alert tab!');
-        });
-    };
 
     $scope.model = {
         name: 'Tabs'
     };
+    $scope.tiles = [
+        {row:2, col:2, background:"red",    title:'Sea Villa', img:'/images/home/a4.jpg', address: "Flic-en-flac"},
+        {row:2, col:2, background:"blue",   title:'Lux Comfort', img:'/images/home/a6.jpg', address: "Flic-en-flac"},
+        {row:2, col:2, background:"yellow", title:'Cozy Apart', img:'/images/home/apartment1.jpg', address: "Flic-en-flac"},
+        {row:2, col:2, background:"green",  title:'Hotel Prestige', img:'/images/home/a7.jpg', address: "Flic-en-flac"},
+        {row:2, col:2, background:"green",  title:'Hotel Prestige', img:'/images/home/a8.jpg', address: "Flic-en-flac"},
+        {row:2, col:2, background:"green",  title:'Hotel Prestige', img:'/images/home/a9.jpg', address: "Flic-en-flac"}
+    ];
+});
+
+app.config(function($mdIconProvider){
+    $mdIconProvider.iconSet("avatar", 'icons/avatar-icons.svg', 128);
 });
