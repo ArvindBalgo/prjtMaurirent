@@ -15,6 +15,7 @@
         <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
         <link href="{{'css/angular-material.min.css'}}" rel="stylesheet">
         <link href="{{'css/app.css'}}" rel="stylesheet">
+        <link href="{{'css/select.css'}}" rel="stylesheet">
         <!--[if lt IE 9]>
         <script src="{{asset('js/html5shiv.js')}}"></script>
         <script src="{{asset('js/respond.min.js')}}"></script>
@@ -24,6 +25,10 @@
         <script src="{{asset('js/angular-aria.min.js')}}"></script>
         <script src="{{asset('js/angular-material.min.js')}}"></script>
         <script src="{{asset('js/ui-bootstrap-tpls-1.1.2.min.js')}}"></script>
+        <script src="{{asset('js/select.js')}}"></script>
+        <!-- Select2 theme -->
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
         <script type="text/javascript" src="{{asset('scripts/app.js')}}"></script>
         <link rel="shortcut icon" href="{{asset('images/ico/favicon.ico')}}">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('images/ico/apple-touch-icon-144-precomposed.png')}}">
