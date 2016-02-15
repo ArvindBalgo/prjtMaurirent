@@ -52,6 +52,20 @@ Route::delete('/api/v1/users/{id}', 'users@destroy');
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+/*Route::group(['middleware' => ['web']], function () {
     //
+}); TG Commented*/
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/', function() {  /*Tg Added*/
+        return view('welcome');
+    });
+
+
+    Route::get('/home', 'HomeController@index');
 });
+
+
+
+
