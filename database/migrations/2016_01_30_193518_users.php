@@ -12,14 +12,14 @@ class Users extends Migration
      */
     public function up()
     {
-        Schema::create('users', function(Blueprint $table){
+        /*Schema::create('users', function(Blueprint $table){
             $table->increments('id');
             $table->string('password');
             $table->string('last_login');
             $table->string('access_type');
             $table->date('date_created');
             $table->date('date_modified');
-    });
+    });*/
     }
 
     /**
