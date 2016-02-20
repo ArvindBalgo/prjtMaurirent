@@ -53,6 +53,7 @@ Route::delete('/api/v1/users/{id}', 'users@destroy');
 |
 */
 
+
 /*Route::group(['middleware' => ['web']], function () {
     //
 }); TG Commented*/
