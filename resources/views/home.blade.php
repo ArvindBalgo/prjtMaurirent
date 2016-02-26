@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
 @section('content')
 <section id="slider" style="padding-top: 55px;" ng-controller="homeController"><!--slider-->
 <div class="container">
@@ -196,4 +194,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection
