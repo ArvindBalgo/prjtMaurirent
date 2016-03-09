@@ -38,7 +38,7 @@ app.filter('propsFilter', function() {
     };
 });
 app.controller('appController', function($scope, $http){
-    $scope.test = "TESTING";
+    $scope.isDisplayed = true;
     console.log($scope.test);
     $scope.login = function(){
         $("#loginModal").modal();
@@ -58,14 +58,26 @@ app.controller('appController', function($scope, $http){
             console.log('ERROR ',error.data);
         };
     };
+
+    $scope.isDisplayedCarousel = function(){
+        if($scope.isDisplayed) {
+            $scope.isDisplayed = false;
+        }
+        else{
+            $scope.isDisplayed = true;
+        }
+
+    };
+
+    $scope.fnToggle = function() {
+      console.log('TOGGLING');
+    };
 });
 
 app.controller('homeController', function($scope, $http, CSRF_TOKEN){
     $scope.home = "HOME TEST";
     $scope.email="";
-    console.log(CSRF_TOKEN);
     $scope.password="";
-console.log($scope.test);
     $scope.loginBtn = function(){
         $scope.remember=false;
         $http({
@@ -78,6 +90,21 @@ console.log($scope.test);
              }), function(error){
              console.log('ERROR ',error.data);
          };
+    };
+    $scope.checkUser = function(){
+        $http({
+            url:'checkuser',
+            method:'GET'
+        }).then(function(response){
+                console.log('RESPONSE USER:', response.data);
+                if(response.data && window.location.pathname == '/'){
+                    window.location = "http://localhost:8000/home";
+                }
+                console.log(window.location.pathname);
+                console.log(window.location.href);
+            }), function(error){
+            console.log('ERROR ',error.data);
+        };
     };
 
     $scope.fnRegister = function(){
@@ -125,10 +152,18 @@ console.log($scope.test);
             image: 'http://lorempixel.com/400/200/people'
         }
     ];
-    console.log($scope.home);
+   // $scope.checkUser();
 });
 
 app.controller('contentController', function($scope, $http){
+    $scope.isDeals          = false;
+    $scope.isAccount        = false;
+    $scope.isBookings       = false;
+    $scope.isPrevPurchases  = false;
+    $scope.isRewardStats    = false;
+    $scope.isNotifs         = false;
+    $scope.isReviews        = false;
+
     $scope.side = "sideContent";
     $scope.multiple = {};
     $scope.multiple.region = [];
@@ -137,34 +172,42 @@ app.controller('contentController', function($scope, $http){
     $scope.arrTypes = ['Apartment','Hotels','Bungalow','Villa','Halls'];
     $scope.mainContent = "main content";
     $scope.isCollapsed = false;
+    $scope.oneAtATime = true;
+    $scope.tabs = [
+        {active:true, title : 'Deals', interface:'isDeals'},
+        {active:false, title : 'Configure Acc', interface:'isAccount'},
+        {active:false, title : 'Bookings', interface:'isBookings'},
+        {active:false,  title : 'Previous Purchases', interface:'isPrevPurchases'},
+        {active:false, title : 'Rewards Status', interface:'isRewardStats'},
+        {active:false, title : 'Notifications', interface:'isNotifs'},
+        {active:false, title : 'Reviews', interface:'isReviews'}
+    ];
+
+    $scope.groups = [
+        {
+            title: 'Dynamic Group Header - 1',
+            content: 'Dynamic Group Body - 1'
+        },
+        {
+            title: 'Dynamic Group Header - 2',
+            content: 'Dynamic Group Body - 2'
+        }
+    ];
+
+    $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+    $scope.addItem = function() {
+        var newItemNo = $scope.items.length + 1;
+        $scope.items.push('Item ' + newItemNo);
+    };
+
+    $scope.status = {
+        isFirstOpen: true,
+        isFirstDisabled: false
+    };
 
     //$scope.arrTypes = ['Hotels', 'Bungalows', 'Apartment', 'Student Residency'];
-    $scope.messages = [{
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-    }, {
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-    }, {
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-    }, {
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-    }, {
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-    }];
+
 
     $scope.model = {
         name: 'Tabs'
@@ -177,8 +220,36 @@ app.controller('contentController', function($scope, $http){
         {row:2, col:2, background:"green",  title:'Hotel Prestige', img:'/images/home/a8.jpg', address: "Flic-en-flac"},
         {row:2, col:2, background:"green",  title:'Hotel Prestige', img:'/images/home/a9.jpg', address: "Flic-en-flac"}
     ];
+
+    $scope.displayPage = function(){
+        angular.forEach($scope.tabs, function(value,  key){
+            switch(value.interface){
+                case 'isDeals' :
+                    $scope.isDeals = value.active;
+                    break;
+                case 'isAccount' :
+                    $scope.isAccount = value.active;
+                    break;
+                case 'isBookings' :
+                    $scope.isBookings = value.active;
+                    break;
+                case 'isPrevPurchases' :
+                    $scope.isPrevPurchases = value.active;
+                    break;
+                case 'isRewardStats' :
+                    $scope.isRewardStats = value.active;
+                    break;
+                case 'isNotifs' :
+                    $scope.isNotifs = value.active;
+                    break;
+                case 'isReviews' :
+                    $scope.isReviews = value.active;
+                    break;
+                default :
+                    break;
+            }
+        })
+    };
+    $scope.displayPage();
 });
 
-app.config(function($mdIconProvider){
-    $mdIconProvider.iconSet("avatar", 'icons/avatar-icons.svg', 128);
-});

@@ -20,6 +20,12 @@
     <script src="{{asset('js/html5shiv.js')}}"></script>
     <script src="{{asset('js/respond.min.js')}}"></script>
     <![endif]-->
+    <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{asset('js/price-range.js')}}"></script>
+    <script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/angular.min.js')}}"></script>
     <script src="{{asset('js/angular-animate.min.js')}}"></script>
     <script src="{{asset('js/angular-aria.min.js')}}"></script>
@@ -43,7 +49,7 @@
     </style>
 </head><!--/head-->
 
-<body ng-app="app" >
+<body ng-app="app" ng-controller="appController">
 <header>
 
     <nav class="navbar navbar-default">
@@ -59,25 +65,23 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}"></a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/home') }}"><h1>MauriRent</h1></a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
+                    <li ><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                    <li class="dropdown">
+                    <li class="dropdown pull-left">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
@@ -92,9 +96,10 @@
         </div>
     </nav>
 </header>
+<button class="btn btn-warning pull-right" ng-click="isDisplayedCarousel()">Toggle Carousel</button>
 @yield('content')
-
-<footer id="footer"><!--Footer-->
+<!--
+<footer id="footer">
     <div class="footer-top">
         <div class="container">
             <div class="row">
@@ -250,15 +255,6 @@
         </div>
     </div>
 
-</footer><!--/Footer-->
-
-
-
-<script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
-<script src="{{asset('js/price-range.js')}}"></script>
-<script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
-<script src="{{asset('js/main.js')}}"></script>
+</footer>-->
 </body>
 </html>
